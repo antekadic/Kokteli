@@ -5,17 +5,20 @@ import PopisKoktela from './Components/PopisKoktela'
 export default function App() {
 const[cocktailList, setcocktailList]=useState([])
 
+
 const handleCocktailInfo =(kokteli)=>{
-  
-console.log(kokteli)
+if(kokteli!=null)
+setcocktailList(kokteli.drinks)
  
+
 }
 
   return (
     <div >
       <Input onCocktailInfo={handleCocktailInfo}/>
+      
       {cocktailList.map((koktel)=>
-        <PopisKoktela name={koktel.drinks[0].strDrink} type={koktel.drinks[0].strAlcoholic}  key={koktel.drinks[0].idDrink}/>)}
+        <PopisKoktela name={koktel.strDrink} type={koktel.strAlcoholic}  key={koktel.idDrink}/>)}
     </div>
   );
 }
