@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+import Input from './Components/Input';
+import PopisKoktela from './Components/PopisKoktela'
 
-function App() {
+export default function App() {
+const[cocktailList, setcocktailList]=useState([])
+
+const handleCocktailInfo =(kokteli)=>{
+  
+console.log(kokteli)
+ 
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <Input onCocktailInfo={handleCocktailInfo}/>
+      {cocktailList.map((koktel)=>
+        <PopisKoktela name={koktel.drinks[0].strDrink} type={koktel.drinks[0].strAlcoholic}  key={koktel.drinks[0].idDrink}/>)}
     </div>
   );
 }
 
-export default App;
+
