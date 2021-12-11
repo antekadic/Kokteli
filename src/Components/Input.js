@@ -20,8 +20,9 @@ console.log(koktelIme);
 let getUrl= url + koktelIme;
   fetch(getUrl)
         .then(response => response.json())
-        .then(cocktailData => setData(cocktailData),
-        onCocktailInfo(data))
+        .then(cocktailData => {
+          setData(cocktailData, () => onCocktailInfo(data));
+        })
         // console.log(data) 
   }
 
